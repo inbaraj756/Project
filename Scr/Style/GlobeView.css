@@ -1,0 +1,199 @@
+.globe-wrapper {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-page);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Remove default focus outline from the canvas */
+.globe-wrapper canvas {
+  outline: none;
+}
+
+.globe-loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-family: var(--font-display);
+  letter-spacing: 0.1em;
+  background: var(--bg-page);
+}
+
+.globe-marker {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  /* Centers the HTML element on the coordinates */
+  transform: translate(-50%, -50%); 
+  pointer-events: auto; /* Ensure it's clickable */
+}
+
+.globe-marker:hover {
+  transform: translate(-50%, -50%) scale(1.5) !important;
+  z-index: 20 !important;
+}
+
+.marker-pulse::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  border: 1px solid inherit; /* Inherits the color from inline style usually, or we can use currentColor if we set color */
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+/* Infowindow overlay - centers it over the globe or positions it to the side */
+.globe-infowindow-overlay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  animation: slideInRight 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.globe-infowindow {
+  background: rgba(13, 27, 46, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 1.25rem;
+  width: 280px;
+  color: var(--text-primary);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  font-family: var(--font-main);
+}
+
+.globe-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.globe-info-header strong {
+  color: var(--accent);
+  font-size: 1.05rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+}
+
+.globe-info-close {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: var(--text-primary);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.globe-info-close:hover {
+  background: var(--danger);
+  color: white;
+  transform: rotate(90deg);
+}
+
+.globe-info-body {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+}
+
+.globe-info-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--accent) 0%, #0099cc 100%);
+  border: none;
+  color: #fff;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.globe-info-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+}
+
+.globe-legend {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  background: rgba(13, 27, 46, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  font-family: var(--font-main);
+  z-index: 10;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.legend-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}

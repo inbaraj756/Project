@@ -1,0 +1,121 @@
+/* ─── AstroIntellect Global Styles ─────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap');
+
+:root {
+  /* COLOR PALETTE */
+  --bg-page: #0a0e1a;
+  --bg-card: #0d1b2e;
+  --bg-secondary: #112240;
+  --border-color: #1e3a5f;
+  
+  --text-primary: #FFFFFF;
+  --text-secondary: #8892a4;
+  
+  --accent: #00d4ff;
+  --accent-hover: #0099cc;
+  
+  --success: #00c878;
+  --warning: #ff9f1c;
+  --danger: #ff4757;
+
+  /* TYPOGRAPHY */
+  --font-main: 'Inter', system-ui, sans-serif;
+  --font-display: 'Orbitron', sans-serif;
+}
+
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-size: 14px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  animation: fadeInPage 0.3s ease forwards;
+}
+
+/* Animations */
+@keyframes fadeInPage {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-page); }
+::-webkit-scrollbar-thumb { 
+  background: var(--bg-secondary); 
+  border-radius: 4px; 
+  border: 1px solid var(--border-color);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--border-color); }
+
+/* Typography Globals */
+h1, .page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+h2, h3, .section-heading {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+p, .body-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.data-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Component Globals */
+.card-base {
+  background: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 0 rgba(0, 212, 255, 0);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(0, 212, 255, 0.2);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+

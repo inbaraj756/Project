@@ -1,0 +1,23 @@
+.stat-container { display: flex; flex-direction: column; flex: 1; padding: 1.5rem 2rem; background: var(--bg-page); overflow-y: auto; box-sizing: border-box; min-height: 0; }
+.chart-loader { color: var(--accent); font-family: var(--font-display); font-size: 14px; opacity: 0.7; }
+.stat-facts { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; }
+
+.stat-fact-card {
+  flex: 1; background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: 8px; padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); transition: transform 0.2s, box-shadow 0.2s;
+}
+.stat-fact-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); }
+
+.stat-fact-icon {
+  font-size: 2.5rem; background: var(--bg-secondary); width: 64px; height: 64px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid var(--border-color);
+}
+.stat-fact-text { color: var(--text-secondary); font-size: 14px; font-weight: 500; line-height: 1.4; font-family: var(--font-main); }
+
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; flex: 1; min-height: 0; }
+
+.stat-chart-wrap {
+  background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px;
+  padding: 1.25rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: center;
+}
